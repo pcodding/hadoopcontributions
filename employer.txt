@@ -1,0 +1,251 @@
+Abhijit Bagri: yahoo 12/1/2009 nokia
+Abhijit Suresh Shingate: sap 12/1/2010 huawei
+Adam Heath: brainfood
+Ahad Rana: commoncrawl
+Alexey Diomin: agava
+Anirban Dasgupta: yahoo
+Brock Noland: thomson-reuters 8/1/2010 cloudera
+Chris Riccomini: linkedin
+Chun Zhang: kosmix 10/1/2006 kickfire 7/1/2009 arcsight
+Cristian Ivascu: adobe
+Eric Payne: yahoo
+Hitesh Shah: other 7/1/2011 hortonworks 
+Ivan Kelly: yahoo
+James Todd: radar-networks 2/1/2010 jive 7/1/2011 bluekai
+Jeffrey Naisbitt: yahoo
+Jim Plush: panasonic 12/1/2009 gravity
+Joey Echeverria: nsa 4/1/2011 cloudera
+Josh Wills: google 6/1/2011 cloudera
+Bernd Fondermann: brainlounge
+Kihwal Lee: yahoo
+Ravi Prakash: yahoo
+Ravi Teja: huawei
+V.V. Chaitanya Krishna: yahoo 3/1/2011 amazon
+Vinay Thota: yahoo
+Venu Gopala Rao: huawei
+Xie Xianshan: fujitsu
+Sreekanth Ramakrishnan: yahoo
+Jay Booth: proclivity 10/1/2010 media6
+Arpit Gupta: yahoo 7/1/2011 hortonworks
+Anupam Seth: yahoo
+Ankur Goel: aol 5/1/2009 yahoo
+Alan Heirich: arista 11/1/2009 amd 5/1/2011 apple
+Al Hoang: university-college-london
+atm: amie-street 5/1/2010 cloudera
+Abdul Qadeer: usc
+Adrian Woodhead: lastfm
+Al Thompson: yahoo
+tucu: yahoo 9/8/2010 cloudera
+Alex Kozlov: turn 11/1/2009 cloudera
+Alex Loddengaard: google 10/1/2008 cloudera 9/1/2010 atlassian
+Anatoli Fomenko: yahoo
+Andre Oriani: motorola
+Andrew Hitchcock: amazon 2/1/2011 google
+Andrew Ryan: collabnet 7/1/2009 facebook
+Andrew Whang: yahoo
+Balaji Rajagopalan: yahoo
+Ben Slusky: janestreet 10/1/2010 autonomy
+Benjamin Reed: yahoo
+Bharath Mundlapudi: yahoo
+Bill Zeller: yahoo
+Bill de hOra: propylon 6/1/2007 newbay
+Brian Bockelman: cern
+Brice Arnould: inria
+Bryan Pendleton: parc 8/1/2007 cmu 2/1/2011 google
+CW Chung: yahoo
+Carlos Valiente: ECMWF
+Chad Metcalf: arch-rock 7/1/2009 cloudera
+Chris Mattmann: usc
+Chris Smith: medem 6/1/2008 podfitness 3/1/2010 mozy
+Chris Wensel: concurrent
+Christian Kunz: yahoo
+Corinne Chandel: yahoo
+Craig Macdonald: u-of-glasgow
+Daryn Sharp: yahoo
+Dave Brosius: Primavera 12/1/2008 oracle
+David Bowen: yahoo
+David Phillips: adknowledge 3/1/2009 ning 9/1/2010 connexive
+Dennis Kubes: visvo 1/1/2009 eqearth 1/1/2010 ning 4/1/2010 bitly
+Devaraj K: huawei
+Dick King: yahoo 4/1/2011 apple
+Dmytro Molkov: facebook
+Erik Steffl: yahoo
+Espen Amble Kolstad: trank 12/1/2010 finn
+Flavio Junqueira: yahoo
+Frederic Bertin: joost 9/1/2009 neosoft 2/1/2010
+Gary Murry: yahoo
+Gautam Kowshik: yahoo 7/1/2010 inmobi 12/1/2010 usc
+Girish Vaitheeswaran: yahoo 5/1/2010 microsoft
+Greg Roelofs: yahoo
+harsh: ericsson 4/1/2011 cloudera
+Hong Tang: yahoo
+Hrishikesh: persistent
+Ian Nowland: amazon
+Igor Bolotin: rightorder 7/1/2006 collarity
+Jason Attributor: attributor 1/1/2009 apress 3/1/2009 ning 5/1/2010 ebay
+Jean-Baptiste Quenot: anyware 1/20/2007 nomao
+Jeff Ames: midokura
+Jeff Hammerbacher: facebook 9/1/2008 cloudera
+Jerome Boulon: yahoo
+Jingguo Yao: ibm 8/1/2010 tianya
+Jingkei Ly: detica
+John George: yahoo
+Jolly Chen: bayarea 12/1/2010 cloudera
+Jonathan Eagles: yahoo
+Jonathan Ellis: mozy 7/1/2007 featurefifty 11/1/2008 rackspace 4/1/2010 datastax
+Jothi Padmanabhan: yahoo
+Kang Xiao: baidu
+Kay Kay: paypal 1/1/2007 broadon 1/1/2008 theladders 1/1/2009 meltwater
+Klaas Bosteels: ning
+Krishna Ramachandran: yahoo
+Lee Tucker: yahoo
+Lei Xu: u-of-nebraska
+Lingyun Yang: yahoo
+Liyin Liang: alibaba
+llu: yahoo 9/20/2011 ibm
+Mac Yang: yahoo
+Martin Traverso: ning 5/1/2009 proofpoint
+Michael Bieniosek: powerset 6/26/2008 microsoft
+Michael Tamm: optivo
+Michel Tourn: yahoo 12/31/2006 kosmix 10/1/2009 google
+Michele Catasta: deri 6/1/2008 yahoo 8/1/2008 deri 9/1/2009 epfl
+Milind Bhandarkar: yahoo 12/1/2010 linkedin
+Ning Li: facebook
+Noah Watkins: ucsc
+Omer Trajman: vertica 1/1/2010 cloudera
+Patrick Angeles: cloudera
+Patrick Kling: u-of-waterloo 9/1/2010 facebook 12/1/2010 u-of-waterloo
+Pete Wyckoff: yahoo 3/17/2008 facebook
+Peter Romianowski: optivo
+Philip Zeyliger: google 12/1/2008 cloudera
+Philippe Gassmann: joost 7/1/2008 other 12/1/2008 goojet
+Po Cheung: ebay
+Prasad Chakka: yahoo 4/1/2008 facebook
+Priyo Mustafi: ebay
+Raghotham Murthy: facebook
+Rahul Kumar Singh: yahoo
+Rajesh Balamohan: yahoo 5/1/2011 intuit
+Rama Ramasamy: facebook
+Ramkumar Vadali: yahoo
+ramya: yahoo 7/1/2011 hortonworks
+Ranjit Mathew: oracle 5/1/2010 yahoo
+Ravi Phulari: yahoo 12/31/2010 apple
+Rick Cox: amazon
+Rob Weltman: yahoo
+Robert Chansler: yahoo
+Robert Evans: yahoo
+Rodrigo Schmidt: facebook
+rvs: yahoo 12/1/2010 cloudera
+Rong-En Fan: yahoo
+Ruyue Ma: baidu
+Sam Pullara: yahoo
+Sam Rash: ning 1/1/2010 facebook
+Sameer Paranjpye: yahoo
+Sanjay Dahiya: yahoo 2/1/2007 other
+Senthil Subramanian: yahoo
+Shevek: karmasphere
+sseth: yahoo 7/1/2011 hortonworks
+Srikanth Sundarrajan: yahoo
+Sriram Rao: kosmix 5/31/2008 quantcase 6/1/2010 yahoo
+Stefan Groschupf: 101tec 9/1/2009 datameer
+Stu Hood: rackspace 11/1/2010 twitter
+Subramaniam Krishnan: yahoo
+Suhas Gogate: yahoo 7/1/2011 hortonworks
+Tahir Hashmi: yahoo
+Tamas Sarlos: yahoo
+tanping: yahoo
+Thomas Friol: joost 2/1/2008 goojet
+Thomas Graves: yahoo
+Thomas Sandholm: hp
+Torsten Curdt: joost 8/1/2009 thorsten-curdt
+Trevor Robinson: microsoft 9/1/2008 google 3/1/2009 drilling-info 3/1/2011 calxeda
+Uma Maheswara Rao G: huawei
+V.V.Chaitanya Krishna: yahoo 3/1/2011 amazon
+Venkatesh S: yahoo
+Vinay Kumar Thota: yahoo
+Vivek Ratan: yahoo
+Wang Xu: china-mobile
+Wendy Chien: yahoo
+Yuri Pradkin: usc
+Zhiyong Zhang: yahoo
+ab: other 1/1/2009 lucid
+acmurthy: yahoo 7/1/2011 hortonworks
+amareshwari: yahoo
+amarrk: yahoo
+andrew: ucb 6/1/2008 yahoo 9/1/2008 ucb
+asrabkin: ucb 5/1/2008 yahoo 8/1/2008 ucb 4/1/2011 cloudera
+athusoo: facebook
+aw: yahoo 8/4/2009 linkedin
+boryas: yahoo 5/1/2011 linkedin
+cafarella: u-of-washington 12/1/2009 u-of-michigan
+cdouglas: yahoo
+cos: yahoo 10/1/2010 cloudera 5/1/2011 other
+cutting: yahoo 8/10/2009 cloudera
+ddas: yahoo 7/1/2011 hortonworks
+dhruba: yahoo 5/3/2008 facebook
+dvryaboy: ask 5/1/2009 cloudera 8/1/2009 twitter
+edwardyoon: NHN 1/1/2011 KT
+eli: cloudera
+enis: other 7/1/2011 hortonworks
+esammer: cloudera
+eyang: yahoo 7/1/2011 hortonworks
+gkesavan: yahoo 7/1/2011 hortonworks
+hairong: yahoo 5/20/2010 facebook
+hemanth: yahoo 9/1/2010 thoughtworks
+heyongqiang: facebook
+jboulon: yahoo
+jghoman: yahoo 12/1/2010 linkedin
+jimk: powerset 6/26/2008 microsoft
+jitendra: yahoo 7/1/2011 hortonworks
+johan: lastfm 10/1/2009 twitter
+jssarma: facebook
+kimballa: cloudera 12/31/2010 wibidata
+knoguchi: yahoo
+kzhang: yahoo 6/1/2011 ibm
+lohit: yahoo 6/15/2009 quantcast
+mahadev: yahoo 7/1/2011 hortonworks
+makund: yahoo
+matei: facebook 10/1/2008 cloudera 7/29/2009 ucb
+mattf: yahoo 7/1/2011 hortonworks
+molkov: facebook
+mukund: yahoo
+namit: facebook
+nigel: yahoo 4/2/2010 jive
+omalley: yahoo 7/1/2011 hortonworks
+rangadi: yahoo 10/1/2009 playdom 10/12/2010 twitter
+ravigummadi: yahoo
+runping: yahoo 1/1/2009 amazon
+schen: facebook
+scottcarey: richrelevance
+sharad: yahoo 7/1/2011 hortonworks 9/1/2011 inmobi
+shv: yahoo 10/11/2010 ebay
+siren: wmdata 2/1/2008 foofactory
+sradia: yahoo 7/1/2011 hortonworks
+sseth: yahoo 7/1/2011 hortonworks
+stack: powerset 6/26/2008 microsoft 1/1/2010 stumbleupon
+stevel: hp 7/1/2011 hortonworks
+suresh: yahoo 7/1/2011 hortonworks
+szetszwo: yahoo 7/1/2011 hortonworks
+taton: inria 11/1/2008 google
+todd: amie-street 3/1/2009 cloudera
+tomwhite: other 10/16/2008 cloudera
+vinodkv: yahoo 7/1/2011 hortonworks
+yhemanth: yahoo 9/1/2010 thoughtworks
+zshao: yahoo 3/26/2008 facebook
+Luca Telloli: yahoo 2/1/2009 barcelona-supercomputing
+Kevin Peterson: nextag 7/1/2008 biz360 5/1/2010 wealthfront
+Wei Yongjun: fujitsu
+yanjinshuang: 126dot
+Patrick Hunt: yahoo 5/1/2010 cloudera
+Ahmed Radwan: yahoo 11/1/2010 cloudera
+jitendra: yahoo 7/1/2011 hortonworks
+Alejandro Abdelnur: yahoo 5/1/2011 cloudera
+Andrzej Bialecki: SIGRAM
+Weiyan Wang: microsoft
+druba: yahoo 5/1/2008 facebook
+Raja Aluri: hortonworks
+Brandon Li: emc 1/1/2012 hortonworks
+Colin Patrick McCabe: cloudera
+Jason Lowe: yahoo
+Jing Zhao: hortonworks
+Mithun Radhakrishnan: yahoo
