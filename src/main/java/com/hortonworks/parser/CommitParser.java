@@ -1,6 +1,7 @@
 package com.hortonworks.parser;
 
 import java.text.ParseException;
+import java.util.Collection;
 import java.util.LinkedList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -13,11 +14,14 @@ import org.springframework.transaction.annotation.Transactional;
 import com.hortonworks.domain.Change;
 import com.hortonworks.domain.Commit;
 import com.hortonworks.domain.Committer;
+import com.hortonworks.domain.Contributor;
 import com.hortonworks.domain.Employer;
 import com.hortonworks.domain.Jira;
 import com.hortonworks.domain.Project;
 import com.hortonworks.service.CommitterService;
+import com.hortonworks.service.ContributorService;
 import com.hortonworks.service.JiraService;
+import com.hortonworks.service.NameFinderService;
 import com.hortonworks.service.ProjectService;
 
 @Service
@@ -28,6 +32,10 @@ public class CommitParser {
 	private CommitterService committerService;
 	@Autowired
 	private JiraService jiraService;
+	@Autowired
+	private NameFinderService nameFinderService;
+	@Autowired
+	private ContributorService contributorService;
 
 	private Logger logger = Logger.getLogger(this.getClass());
 	public Commit currentCommit;
@@ -52,7 +60,6 @@ public class CommitParser {
 		if (currentCommit != null)
 			commits.add(currentCommit);
 		projectService.save(project);
-		System.out.println("Saving project with ID: " + project.getNodeId());
 		return commits;
 	}
 
@@ -119,12 +126,35 @@ public class CommitParser {
 								}
 								currentCommit.getJira().add(jira);
 								currentCommit.setDescription(matcher.group(0));
+								Collection<String> contributorNames = identifyContributors(
+										currentCommit, jira);
+								if (contributorNames != null
+										&& contributorNames.size() > 0) {
+									for (String name : contributorNames) {
+										Contributor contributor = contributorService
+												.findByname(name);
+										if (contributor == null)
+											contributor = new Contributor(name);
+										System.out.println("adding contributor: " + contributor);
+										currentCommit.getContributors().add(
+												contributor);
+									}
+								}
 							}
 						}
 					}
 				}
 			}
 		}
+	}
+
+	private Collection<String> identifyContributors(Commit commit, Jira jira) {
+		if (jira == null)
+			logger.info("I couldn't find a Jira for commit: "
+					+ commit.getCommitId());
+		Collection<String> names = nameFinderService.findNames(commit
+				.getDescription());
+		return names;
 	}
 
 	public ProjectService getProjectService() {

@@ -22,7 +22,7 @@ public class Commit {
 	private String description;
 	private String gitSvnId;
 	@RelatedTo(type = "contributed")
-	private Set<Contributor> contributors;
+	private Set<Contributor> contributors = new HashSet<Contributor>();
 	@RelatedTo(type = "addresses")
 	private Set<Jira> jira = new HashSet<Jira>();
 

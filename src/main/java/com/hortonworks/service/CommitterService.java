@@ -33,4 +33,9 @@ public class CommitterService {
 			System.out.println(committer.getUserId());
 		return committer;
 	}
+
+	public Committer findByAlias(String alias) {
+		String query = "*" + alias + "*";
+		return repo.findAllByQuery("aliases", query).single();
+	}
 }

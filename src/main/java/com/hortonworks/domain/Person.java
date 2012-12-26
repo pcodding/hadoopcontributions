@@ -18,15 +18,17 @@ public class Person {
 	@GraphId
 	Long nodeId;
 	public String firstName;
+	public String middleInitial;
 	public String lastName;
 	@Indexed
 	public String email;
 	public Employer employer;
 	@RelatedTo(type = "committed", direction = Direction.BOTH)
 	private Set<Commit> commits = new HashSet<Commit>();
-	private String apacheUserId;
 	@Indexed
-	private String aliases = new String();
+	protected String aliases = new String();
+	@Indexed
+	protected String name;
 
 	public Person() {
 	}
@@ -34,8 +36,8 @@ public class Person {
 	public Person(String firstName, String lastName, String email) {
 		this.firstName = firstName;
 		this.lastName = lastName;
+		this.name = firstName + " " + lastName;
 		this.email = Util.normalizeEmail(email);
-		this.apacheUserId = this.email.split("@")[0];
 	}
 
 	public String getFirstName() {
@@ -79,14 +81,6 @@ public class Person {
 		this.commits = commits;
 	}
 
-	public String getApacheUserId() {
-		return apacheUserId;
-	}
-
-	public void setApacheUserId(String apacheUserId) {
-		this.apacheUserId = apacheUserId;
-	}
-
 	public String[] getAliases() {
 		if (aliases != null)
 			return aliases.split("|");
@@ -96,6 +90,14 @@ public class Person {
 
 	public void addAlias(String alias) {
 		this.aliases += (alias + "|");
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public String toString() {
