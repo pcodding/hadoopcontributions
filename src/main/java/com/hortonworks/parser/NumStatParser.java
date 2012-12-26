@@ -12,7 +12,6 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Service;
 
 import com.hortonworks.domain.Commit;
-import com.hortonworks.domain.Committer;
 
 @Service
 public class NumStatParser {
@@ -20,10 +19,10 @@ public class NumStatParser {
 	private String filePath;
 	String authorsFilePath;
 	String employersFilePath;
-	
+
 	@Autowired
 	private CommitParser parser;
-	
+
 	@Autowired
 	private AuthorParser authorParser;
 
@@ -44,14 +43,16 @@ public class NumStatParser {
 			parser.parseCommit(currentLine);
 		}
 		LinkedList<Commit> commits = parser.completeParse();
-		logger.info("Processed " + parser.rowCount + " stored " + parser.project.getCommits().size());
-		//System.out.println(parser.project.getCommits());
+		logger.info("Processed " + parser.rowCount + " stored "
+				+ parser.project.getCommits().size());
+		// System.out.println(parser.project.getCommits());
 		// System.out.println(commits);
 	}
-	
+
 	public void parseAuthors() throws IOException {
 		logger.info("Parsing author data from file: " + authorsFilePath);
-		BufferedReader input = new BufferedReader(new FileReader(authorsFilePath));
+		BufferedReader input = new BufferedReader(new FileReader(
+				authorsFilePath));
 		String currentLine = null;
 		while ((currentLine = input.readLine()) != null) {
 			// logger.debug(currentLine);
@@ -66,17 +67,18 @@ public class NumStatParser {
 		else {
 			String numstatFilePath = args[0];
 			String authorsFilePath = args[1];
-			//String employersFilePath = args[2];
+			// String employersFilePath = args[2];
 			ApplicationContext context = new ClassPathXmlApplicationContext(
 					"applicationContext.xml");
 			NumStatParser parser = (NumStatParser) context
 					.getBean("numStatParser");
 			parser.setFilePath(numstatFilePath);
 			parser.setAuthorsFilePath(authorsFilePath);
-			//parser.setEmployersFilePath(employersFilePath);
+			// parser.setEmployersFilePath(employersFilePath);
 			try {
 				parser.parseData();
 				parser.parseAuthors();
+				((ClassPathXmlApplicationContext) context).close();
 			} catch (IOException e) {
 				logger.error(e.getMessage(), e);
 			}

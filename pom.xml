@@ -7,6 +7,33 @@
 	<version>1.0-SNAPSHOT</version>
 	<name>hadoop-contributions</name>
 	<url>http://maven.apache.org</url>
+	<properties>
+		<spring.framework.version>3.1.1.RELEASE</spring.framework.version>
+		<spring-data-neo4j.version>2.1.0.RC3</spring-data-neo4j.version>
+		<neo4j.version>1.8.M07</neo4j.version>
+	</properties>
+	<repositories>
+		<repository>
+			<id>neo4j-release-repository</id>
+			<name>Neo4j Maven 2 release repository</name>
+			<url>http://m2.neo4j.org/releases</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+		<repository>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+			<id>central</id>
+			<name>milestone</name>
+			<url>http://repo.springsource.org/milestone</url>
+		</repository>
+	</repositories>
+
 	<dependencies>
 		<dependency>
 			<groupId>junit</groupId>
@@ -24,27 +51,48 @@
 			<artifactId>commons-lang</artifactId>
 			<version>2.6</version>
 		</dependency>
+
 		<dependency>
 			<groupId>org.springframework.data</groupId>
 			<artifactId>spring-data-neo4j</artifactId>
-			<version>2.0.1.RELEASE</version>
+			<version>${spring-data-neo4j.version}</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>slf4j-log4j12</artifactId>
+					<groupId>org.slf4j</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		<dependency>
+			<groupId>org.neo4j.app</groupId>
+			<artifactId>neo4j-server</artifactId>
+			<version>${neo4j.version}</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>slf4j-log4j12</artifactId>
+					<groupId>org.slf4j</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.neo4j.app</groupId>
+			<artifactId>neo4j-server</artifactId>
+			<version>${neo4j.version}</version>
+			<classifier>static-web</classifier>
+			<exclusions>
+				<exclusion>
+					<artifactId>slf4j-log4j12</artifactId>
+					<groupId>org.slf4j</groupId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.data</groupId>
 			<artifactId>spring-data-neo4j-aspects</artifactId>
-			<version>2.0.1.RELEASE</version>
+			<version>${spring-data-neo4j.version}</version>
 		</dependency>
 	</dependencies>
-	<repositories>
-		<repository>
-			<id>spring-maven-snapshot</id>
-			<snapshots>
-				<enabled>true</enabled>
-			</snapshots>
-			<name>Springframework Maven MILESTONE Repository</name>
-			<url>http://maven.springframework.org/milestone</url>
-		</repository>
-	</repositories>
 	<build>
 		<plugins>
 			<plugin>

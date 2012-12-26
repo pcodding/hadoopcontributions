@@ -13,8 +13,6 @@ import com.hortonworks.utils.Util;
 
 @NodeEntity
 public class Committer extends Person {
-	@GraphId
-	Long nodeId;
 	@RelatedTo(type = "committed", direction = Direction.BOTH)
 	private Set<Commit> commits = new HashSet<Commit>();
 	private Employer employer;

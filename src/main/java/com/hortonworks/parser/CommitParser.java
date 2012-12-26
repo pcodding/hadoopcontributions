@@ -52,6 +52,7 @@ public class CommitParser {
 		if (currentCommit != null)
 			commits.add(currentCommit);
 		projectService.save(project);
+		System.out.println("Saving project with ID: " + project.getNodeId());
 		return commits;
 	}
 

@@ -28,6 +28,10 @@ public class Project {
 
 	public void setCommits(Set<Commit> commits) {
 		this.commits = commits;
-	}	
+	}
+
+	public Long getNodeId() {
+		return nodeId;
+	}
 }
 
