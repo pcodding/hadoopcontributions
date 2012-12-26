@@ -26,7 +26,7 @@ public class Person {
 	private Set<Commit> commits = new HashSet<Commit>();
 	private String apacheUserId;
 	@Indexed
-	private Set<String> aliases = new HashSet<String>();
+	private String aliases = new String();
 
 	public Person() {
 	}
@@ -87,12 +87,15 @@ public class Person {
 		this.apacheUserId = apacheUserId;
 	}
 
-	public Set<String> getAliases() {
-		return aliases;
+	public String[] getAliases() {
+		if (aliases != null)
+			return aliases.split("|");
+		else
+			return new String[0];
 	}
 
-	public void setAliases(Set<String> aliases) {
-		this.aliases = aliases;
+	public void addAlias(String alias) {
+		this.aliases += (alias + "|");
 	}
 
 	public String toString() {

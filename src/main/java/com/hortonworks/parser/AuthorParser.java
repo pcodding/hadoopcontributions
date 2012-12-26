@@ -27,11 +27,11 @@ public class AuthorParser {
 		String right = pieces[1];
 		Committer committer = committerService.findByUserId(left);
 		if (committer != null)
-			committer.getAliases().add(right);
+			committer.addAlias(right);
 		else {
 			committer = committerService.findByUserId(right);
 			if (committer != null)
-				committer.getAliases().add(left);
+				committer.addAlias(left);
 		}
 		if (committer != null) {
 			logger.debug("Left: " + left + " -- Right: " + right);
