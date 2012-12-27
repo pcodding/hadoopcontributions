@@ -15,8 +15,20 @@ public class CommitService {
 		Iterable<Commit> commits = repo.findAll();
 		return commits;
 	}
-	
+
+	public void save(Commit commit) {
+		repo.save(commit);
+	}
+
 	public Commit findCommitByCommitId(String commitId) {
 		return repo.findByPropertyValue("commitId", commitId);
+	}
+
+	public Commit findByJiraId(String jiraId) {
+		return repo.findByJiraId(jiraId);
+	}
+
+	public Iterable<Commit> findAllByJiraId(String jiraId) {
+		return repo.findAllByJiraId(jiraId);
 	}
 }

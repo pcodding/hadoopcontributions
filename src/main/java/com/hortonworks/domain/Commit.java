@@ -26,7 +26,7 @@ public class Commit {
 	@RelatedTo(type = "contributed")
 	private Set<Contributor> contributors = new HashSet<Contributor>();
 	@RelatedTo(type = "addresses")
-	private Set<Jira> jira = new HashSet<Jira>();
+	private Jira jira;
 
 	@RelatedTo(type = "changed")
 	public Set<Change> changes = new HashSet<Change>();
@@ -94,11 +94,11 @@ public class Commit {
 		this.changes = changes;
 	}
 
-	public Set<Jira> getJira() {
+	public Jira getJira() {
 		return jira;
 	}
 
-	public void setJira(Set<Jira> jira) {
+	public void setJira(Jira jira) {
 		this.jira = jira;
 	}
 

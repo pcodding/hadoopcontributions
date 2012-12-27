@@ -8,7 +8,7 @@ import org.springframework.data.neo4j.annotation.NodeEntity;
 public class Jira {
 	@GraphId
 	Long nodeId;
-	@Indexed
+	@Indexed(indexName = "jiraId")
 	private String jiraId;
 
 	public Jira() {
@@ -27,4 +27,3 @@ public class Jira {
 		this.jiraId = jiraId;
 	}
 }
-

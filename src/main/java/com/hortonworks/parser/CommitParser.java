@@ -139,13 +139,10 @@ public class CommitParser {
 									jira = new Jira(matcher.group(1));
 									jiraService.save(jira);
 								}
-								currentCommit.getJira().add(jira);
-								if (jira.getJiraId().equals("PIG-1680")) {
-									boolean test = true;
-								}
+								currentCommit.setJira(jira);
 								currentCommit.setDescription(matcher.group(0));
 								Collection<String> contributorNames = identifyContributors(
-										currentCommit, jira);
+										currentCommit.getDescription(), jira);
 								if (contributorNames != null
 										&& contributorNames.size() > 0) {
 									for (String name : contributorNames) {
@@ -182,12 +179,8 @@ public class CommitParser {
 		}
 	}
 
-	private Collection<String> identifyContributors(Commit commit, Jira jira) {
-		if (jira == null)
-			logger.info("I couldn't find a Jira for commit: "
-					+ commit.getCommitId());
-		Collection<String> names = nameFinderService.findNames(commit
-				.getDescription());
+	public Collection<String> identifyContributors(String description, Jira jira) {
+		Collection<String> names = nameFinderService.findNames(description);
 		return names;
 	}
 

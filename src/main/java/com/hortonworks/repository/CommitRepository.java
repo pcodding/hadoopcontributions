@@ -1,12 +1,15 @@
 package com.hortonworks.repository;
 
 import org.springframework.data.neo4j.annotation.Query;
+import org.springframework.data.neo4j.annotation.QueryType;
 import org.springframework.data.neo4j.repository.GraphRepository;
 
 import com.hortonworks.domain.Commit;
-import com.hortonworks.domain.Contributor;
 
 public interface CommitRepository extends GraphRepository<Commit> {
-	@Query("start commit={0} match m<-[rating:RATED]-user return rating")
-	Iterable<Contributor> getContributors(Commit commit);
+	@Query(value = "START jira = node:jiraId(jiraId={0}) MATCH commit-[:addresses]->jira RETURN commit", type = QueryType.Cypher)
+	public Commit findByJiraId(String jiraId);
+	
+	@Query(value = "START jira = node:jiraId(jiraId={0}) MATCH commit-[:addresses]->jira RETURN commit", type = QueryType.Cypher)
+	public Iterable<Commit> findAllByJiraId(String jiraId);
 }

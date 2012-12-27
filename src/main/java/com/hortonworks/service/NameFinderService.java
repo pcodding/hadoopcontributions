@@ -55,7 +55,7 @@ public class NameFinderService implements InitializingBean {
 	public Collection<String> processHints(String description) {
 		Collection<String> hints = new LinkedList<String>();
 		String[] regexes = { "Contributed by (.*)",
-				"\\(([\\w*, ,\\,]*)\\Wvia (\\w*)\\)" };
+				"\\(([\\w*, ,\\,]*)\\Wvia (\\w*)\\)", "\\((\\w*)\\)$" };
 		for (String regex : regexes) {
 			Pattern pattern = Pattern.compile(regex);
 			Matcher matcher = pattern.matcher(description);
