@@ -1,4 +1,4 @@
-## Checking out projects
+## Checking Out Hadoop Projects
 
 Hadoop Common
 
@@ -30,8 +30,17 @@ HCatalog
 	git clone https://github.com/apache/hcatalog.git
 	git log --numstat > hcatalog.numstat
 
-## Running
+## Running the Application
 
-Increase the Heap size for Neoclipse by editing the: `eclipse/neoclipse.app/Contents/MacOS/neoclipse.ini` file.
+	mvn clean package
+	./run.sh "Project Name" <path to numstat> <path to contributor metadata> <optional path to CHANGES.txt>
+	
+The application will parse the data in the numstat output and cross reference contributors and committers with the metadata CSV file.  Optionally it will parse the CHANGES.txt and update the graph accordingly.  The graph database will be created in the target/data/graph.db folder.  This can be opened up with Neoclipse to browse and query.
+
+## Using [Neoclipse](https://github.com/neo4j/neoclipse/downloads)
+
+Increase the Heap size for Neoclipse by editing the: `eclipse/neoclipse.app/Contents/MacOS/neoclipse.ini` file, and appending the following line to the file
 
 	-Xmx2048m
+
+Once that has been done open up neoclipse.

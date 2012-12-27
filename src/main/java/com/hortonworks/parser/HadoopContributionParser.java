@@ -18,8 +18,8 @@ import com.hortonworks.domain.Project;
 import com.hortonworks.service.ProjectService;
 
 @Service
-public class NumStatParser {
-	public static Logger logger = Logger.getLogger("NumStatParser");
+public class HadoopContributionParser {
+	public static Logger logger = Logger.getLogger("HadoopContributionParser");
 	private String projectName;
 	private String filePath;
 	private String contributorsMetadataPath;
@@ -37,11 +37,11 @@ public class NumStatParser {
 	@Autowired
 	ChangesParser changesParser;
 
-	public NumStatParser() {
+	public HadoopContributionParser() {
 
 	}
 
-	public NumStatParser(String filePath) {
+	public HadoopContributionParser(String filePath) {
 		this.filePath = filePath;
 	}
 
@@ -108,8 +108,8 @@ public class NumStatParser {
 			// Initialize Spring context
 			ApplicationContext context = new ClassPathXmlApplicationContext(
 					"applicationContext.xml");
-			NumStatParser parser = (NumStatParser) context
-					.getBean("numStatParser");
+			HadoopContributionParser parser = (HadoopContributionParser) context
+					.getBean("hadoopContributionParser");
 			parser.setProjectName(projectName);
 			parser.setFilePath(numstatFilePath);
 			parser.setContributorsMetadataPath(contributorMetadataPath);
@@ -180,6 +180,6 @@ public class NumStatParser {
 
 	public static void printUsage() {
 		System.err
-				.println("com.hortonworks.parser.NumStatParser <path to numstat> <path to authors>");
+				.println("./run.sh \"Project Name\" <path to numstat> <path to contributor metadata> <optional path to CHANGES.txt>");
 	}
 }
