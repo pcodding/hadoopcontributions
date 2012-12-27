@@ -30,7 +30,10 @@ public class Committer extends Person {
 	public Committer(String name, String email) {
 		super(null, null, email);
 		this.firstName = name.split(" ")[0];
-		this.lastName = name.split(" ")[1];
+		try {
+			this.lastName = name.split(" ")[1];
+		} catch (Exception e) {
+		}
 		this.name = name;
 		this.userId = Util.normalizeEmail(email).split("@")[0];
 	}

@@ -1,8 +1,9 @@
 package com.hortonworks.parser;
 
 import java.io.BufferedReader;
-import java.io.FileReader;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.LinkedList;
 
 import org.apache.log4j.Logger;
@@ -49,7 +50,8 @@ public class NumStatParser {
 			project = new Project(projectName);
 		parser.setProject(project);
 		logger.info("Parsing numstat data from file: " + filePath);
-		BufferedReader input = new BufferedReader(new FileReader(filePath));
+		BufferedReader input = new BufferedReader(new InputStreamReader(
+				new FileInputStream(filePath), "UTF8"));
 		String currentLine = null;
 		while ((currentLine = input.readLine()) != null) {
 			parser.parseCommit(currentLine);
@@ -65,8 +67,8 @@ public class NumStatParser {
 	public void parseContributorMetadata() throws IOException {
 		logger.info("Parsing contributor meta data from file: "
 				+ contributorsMetadataPath);
-		BufferedReader input = new BufferedReader(new FileReader(
-				contributorsMetadataPath));
+		BufferedReader input = new BufferedReader(new InputStreamReader(
+				new FileInputStream(contributorsMetadataPath), "UTF8"));
 		String currentLine = null;
 		while ((currentLine = input.readLine()) != null) {
 			contributorMetadataParser.parseMetaData(currentLine);

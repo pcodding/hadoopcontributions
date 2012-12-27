@@ -140,6 +140,9 @@ public class CommitParser {
 									jiraService.save(jira);
 								}
 								currentCommit.getJira().add(jira);
+								if (jira.getJiraId().equals("PIG-1680")) {
+									boolean test = true;
+								}
 								currentCommit.setDescription(matcher.group(0));
 								Collection<String> contributorNames = identifyContributors(
 										currentCommit, jira);
@@ -148,15 +151,25 @@ public class CommitParser {
 									for (String name : contributorNames) {
 										Contributor contributor = contributorService
 												.findByname(name.trim());
-										// if !full name direct match, then check alias
+										// if !full name direct match, then
+										// check alias
 										if (contributor == null) {
-											contributorService.findByAlias(name);
+											contributor = contributorService
+													.findByAlias(name);
 										}
 										if (contributor == null) {
 											contributor = new Contributor(name);
+											contributorService
+													.save(contributor);
 											logger.warn("I found a contributor I don't know about: '"
-													+ name + "'");
-										}
+													+ name
+													+ "'"
+													+ " commit id: "
+													+ currentCommit
+															.getCommitId());
+										} else
+											logger.debug("Matched contributor for name: "
+													+ name);
 										currentCommit.getContributors().add(
 												contributor);
 									}
