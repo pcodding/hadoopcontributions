@@ -12,19 +12,24 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Service;
 
 import com.hortonworks.domain.Commit;
+import com.hortonworks.domain.Project;
+import com.hortonworks.service.ProjectService;
 
 @Service
 public class NumStatParser {
 	public static Logger logger = Logger.getLogger("NumStatParser");
+	private String projectName;
 	private String filePath;
-	String authorsFilePath;
-	String employersFilePath;
+	private String contributorsMetadataPath;
 
 	@Autowired
 	private CommitParser parser;
 
 	@Autowired
-	private AuthorParser authorParser;
+	private ContributorMetadataParser contributorMetadataParser;
+
+	@Autowired
+	ProjectService projectService;
 
 	public NumStatParser() {
 
@@ -34,50 +39,60 @@ public class NumStatParser {
 		this.filePath = filePath;
 	}
 
+	/**
+	 * @throws IOException
+	 */
 	public void parseData() throws IOException {
+		logger.debug("Resolving project by name: " + projectName);
+		Project project = projectService.findByName(projectName);
+		if (project == null)
+			project = new Project(projectName);
+		parser.setProject(project);
 		logger.info("Parsing numstat data from file: " + filePath);
 		BufferedReader input = new BufferedReader(new FileReader(filePath));
 		String currentLine = null;
 		while ((currentLine = input.readLine()) != null) {
-			// logger.debug(currentLine);
 			parser.parseCommit(currentLine);
 		}
 		LinkedList<Commit> commits = parser.completeParse();
 		logger.info("Processed " + parser.rowCount + " stored "
 				+ parser.project.getCommits().size());
-		// System.out.println(parser.project.getCommits());
-		// System.out.println(commits);
 	}
 
-	public void parseAuthors() throws IOException {
-		logger.info("Parsing author data from file: " + authorsFilePath);
+	/**
+	 * @throws IOException
+	 */
+	public void parseContributorMetadata() throws IOException {
+		logger.info("Parsing contributor meta data from file: "
+				+ contributorsMetadataPath);
 		BufferedReader input = new BufferedReader(new FileReader(
-				authorsFilePath));
+				contributorsMetadataPath));
 		String currentLine = null;
 		while ((currentLine = input.readLine()) != null) {
-			// logger.debug(currentLine);
-			authorParser.parseAuthor(currentLine);
+			contributorMetadataParser.parseMetaData(currentLine);
 		}
-		authorParser.completeParse();
 	}
 
+	/**
+	 * @param args
+	 */
 	public static void main(String[] args) {
-		if (args.length == 0 || args.length < 2)
+		if (args.length == 0 || args.length < 3)
 			printUsage();
 		else {
-			String numstatFilePath = args[0];
-			String authorsFilePath = args[1];
-			// String employersFilePath = args[2];
+			String projectName = args[0];
+			String numstatFilePath = args[1];
+			String contributorMetadataPath = args[2];
 			ApplicationContext context = new ClassPathXmlApplicationContext(
 					"applicationContext.xml");
 			NumStatParser parser = (NumStatParser) context
 					.getBean("numStatParser");
+			parser.setProjectName(projectName);
 			parser.setFilePath(numstatFilePath);
-			parser.setAuthorsFilePath(authorsFilePath);
-			// parser.setEmployersFilePath(employersFilePath);
+			parser.setContributorsMetadataPath(contributorMetadataPath);
 			try {
+				parser.parseContributorMetadata();
 				parser.parseData();
-				parser.parseAuthors();
 				((ClassPathXmlApplicationContext) context).close();
 			} catch (IOException e) {
 				logger.error(e.getMessage(), e);
@@ -93,20 +108,12 @@ public class NumStatParser {
 		this.filePath = filePath;
 	}
 
-	public String getAuthorsFilePath() {
-		return authorsFilePath;
+	public String getContributorsMetadataPath() {
+		return contributorsMetadataPath;
 	}
 
-	public void setAuthorsFilePath(String authorsFilePath) {
-		this.authorsFilePath = authorsFilePath;
-	}
-
-	public String getEmployersFilePath() {
-		return employersFilePath;
-	}
-
-	public void setEmployersFilePath(String employersFilePath) {
-		this.employersFilePath = employersFilePath;
+	public void setContributorsMetadataPath(String contributorsMetadataPath) {
+		this.contributorsMetadataPath = contributorsMetadataPath;
 	}
 
 	public CommitParser getParser() {
@@ -117,12 +124,12 @@ public class NumStatParser {
 		this.parser = parser;
 	}
 
-	public AuthorParser getAuthorParser() {
-		return authorParser;
+	public String getProjectName() {
+		return projectName;
 	}
 
-	public void setAuthorParser(AuthorParser authorParser) {
-		this.authorParser = authorParser;
+	public void setProjectName(String projectName) {
+		this.projectName = projectName;
 	}
 
 	public static void printUsage() {

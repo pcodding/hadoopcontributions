@@ -31,6 +31,7 @@ public class Committer extends Person {
 		super(null, null, email);
 		this.firstName = name.split(" ")[0];
 		this.lastName = name.split(" ")[1];
+		this.name = name;
 		this.userId = Util.normalizeEmail(email).split("@")[0];
 	}
 

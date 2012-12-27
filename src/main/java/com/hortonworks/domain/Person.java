@@ -83,13 +83,19 @@ public class Person {
 
 	public String[] getAliases() {
 		if (aliases != null)
-			return aliases.split("|");
+			return aliases.split("\\|");
 		else
 			return new String[0];
 	}
+	
+	public String getAliasesAsString() {
+		return aliases;
+	}
 
 	public void addAlias(String alias) {
-		this.aliases += (alias + "|");
+		if (this.aliases.length() == 0)
+				aliases = "|";
+		this.aliases += (alias.toUpperCase() + "|");
 	}
 
 	public String getName() {

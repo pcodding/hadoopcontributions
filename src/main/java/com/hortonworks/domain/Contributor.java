@@ -10,7 +10,7 @@ public class Contributor extends Person {
 
 	public Contributor(String name) {
 		super();
-		this.name = name;
+		this.name = name.trim();
 	}
 
 	public Contributor(String firstName, String lastName, String email) {

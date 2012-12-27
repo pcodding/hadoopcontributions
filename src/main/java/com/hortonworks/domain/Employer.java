@@ -6,6 +6,7 @@ import java.util.Set;
 import org.apache.commons.lang.builder.ToStringBuilder;
 import org.neo4j.graphdb.Direction;
 import org.springframework.data.neo4j.annotation.GraphId;
+import org.springframework.data.neo4j.annotation.Indexed;
 import org.springframework.data.neo4j.annotation.NodeEntity;
 import org.springframework.data.neo4j.annotation.RelatedTo;
 
@@ -19,6 +20,7 @@ public class Employer {
 	@RelatedTo(type = "committers", direction = Direction.INCOMING)
 	private Set<Committer> committers = new HashSet<Committer>();
 
+	@Indexed(indexName="orgName")
 	public String orgName;
 
 	public Employer() {
@@ -57,4 +59,3 @@ public class Employer {
 		return new ToStringBuilder(this).toString();
 	}
 }
-

@@ -18,6 +18,7 @@ import com.hortonworks.domain.Contributor;
 import com.hortonworks.domain.Employer;
 import com.hortonworks.domain.Jira;
 import com.hortonworks.domain.Project;
+import com.hortonworks.service.CommitService;
 import com.hortonworks.service.CommitterService;
 import com.hortonworks.service.ContributorService;
 import com.hortonworks.service.JiraService;
@@ -36,6 +37,8 @@ public class CommitParser {
 	private NameFinderService nameFinderService;
 	@Autowired
 	private ContributorService contributorService;
+	@Autowired
+	private CommitService commitService;
 
 	private Logger logger = Logger.getLogger(this.getClass());
 	public Commit currentCommit;
@@ -48,7 +51,7 @@ public class CommitParser {
 	public Pattern gitSvnIdPattern = Pattern.compile("^git-svn-id:\\W(http.*)");
 	public Pattern changePattern = Pattern
 			.compile("^(\\d)++\\W(\\d)++\\W([a-z].*)");
-	Project project = new Project("Hadoop Common");
+	Project project;
 	Employer employer = new Employer("Apache");
 	int rowCount = 0;
 
@@ -71,9 +74,14 @@ public class CommitParser {
 		matcher = commitPattern.matcher(line);
 		if (matcher.find()) {
 			if (currentCommit != null) {
-				commits.add(currentCommit);
-				project.getCommits().add(currentCommit);
-				rowCount++;
+				Commit existingCommit = commitService
+						.findCommitByCommitId(currentCommit.getCommitId());
+				if (existingCommit == null) {
+					commits.add(currentCommit);
+					project.getCommits().add(currentCommit);
+					projectService.save(project);
+					rowCount++;
+				}
 			}
 			currentCommit = new Commit();
 			currentCommit.setCommitId(matcher.group(1));
@@ -92,7 +100,14 @@ public class CommitParser {
 					if (committer == null) {
 						committer = new Committer(matcher.group(1),
 								matcher.group(2));
-						committer.setEmployer(employer);
+						// Lookup this person as a contributor
+						Contributor contributor = contributorService
+								.findByname(matcher.group(1));
+						if (contributor != null)
+							committer.setEmployer(contributor.getEmployer());
+						else
+							logger.warn("I need more information about committer: "
+									+ committer.getName());
 						committerService.save(committer);
 						employer.getCommitters().add(committer);
 					}
@@ -132,10 +147,16 @@ public class CommitParser {
 										&& contributorNames.size() > 0) {
 									for (String name : contributorNames) {
 										Contributor contributor = contributorService
-												.findByname(name);
-										if (contributor == null)
+												.findByname(name.trim());
+										// if !full name direct match, then check alias
+										if (contributor == null) {
+											contributorService.findByAlias(name);
+										}
+										if (contributor == null) {
 											contributor = new Contributor(name);
-										System.out.println("adding contributor: " + contributor);
+											logger.warn("I found a contributor I don't know about: '"
+													+ name + "'");
+										}
 										currentCommit.getContributors().add(
 												contributor);
 									}
@@ -163,5 +184,13 @@ public class CommitParser {
 
 	public void setProjectService(ProjectService projectService) {
 		this.projectService = projectService;
+	}
+
+	public Project getProject() {
+		return project;
+	}
+
+	public void setProject(Project project) {
+		this.project = project;
 	}
 }

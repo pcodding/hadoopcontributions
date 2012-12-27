@@ -19,4 +19,8 @@ public class ProjectService {
 	public void save(Project project) {
 		repo.save(project);
 	}
+
+	public Project findByName(String name) {
+		return repo.findByPropertyValue("name", name);
+	}
 }

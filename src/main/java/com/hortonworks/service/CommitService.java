@@ -15,4 +15,8 @@ public class CommitService {
 		Iterable<Commit> commits = repo.findAll();
 		return commits;
 	}
+	
+	public Commit findCommitByCommitId(String commitId) {
+		return repo.findByPropertyValue("commitId", commitId);
+	}
 }

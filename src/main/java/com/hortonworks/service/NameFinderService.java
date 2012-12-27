@@ -23,7 +23,7 @@ public class NameFinderService implements InitializingBean {
 	private Logger logger = Logger.getLogger(this.getClass());
 	private String personModelPath = new String("en-ner-person.bin");
 	private String tokenModelPath = new String("en-token.bin");
-	private String excludeRegex = new String(".*Fix.*|Resource");
+	private String excludeRegex = new String(".*(Upgrade|FsUrlStreamHandlerFactory|Fix|Resource|Add|Remove|Setup|Change|Mac OS|Generalize|NPE|Refactor|Replace|Test|FSCK|FSData|Allow|Data|Service|NullPointer|JobTracker|Respsect|FSName|Forgot|Context|FileUtil|Improve|DFS|GridMix|Provide|DBInputFormat|DataNode|Sqoop|Updating|NameNode|FileSystem|Balancer|API|Distinguish|Marks|RPC|DistC|Removes|Datanode|InputStream|Copy|Disable|Copy|SequenceFile|TextOuputFormat|Deprecate|SocketIO|DFS|HMaster|NetworkTopology|ArrayList|ChecksumFile|Iterable|Ensure|INodeDirectory|Hadoop|CRC|FsShell|CHANGES|AlreadyBeing|MapReduce|EC2|GenericWriteable).*");
 	Tokenizer tokenizer;
 	NameFinderME nameFinder;
 
@@ -39,9 +39,9 @@ public class NameFinderService implements InitializingBean {
 				name += tokens[arrayIndex] + " ";
 			logger.debug("Identified name: " + name);
 			if (!name.matches(excludeRegex))
-				detectedNames.add(name);
+				detectedNames.add(name.trim());
 			else
-				logger.debug("Found excluded name: " + name);
+				logger.warn("Found excluded name: " + name);
 		}
 		nameFinder.clearAdaptiveData();
 		return detectedNames;
